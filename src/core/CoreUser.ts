@@ -7,8 +7,8 @@ export enum CoreUserRole {
 
 export default class CoreUser extends User {
   private role: CoreUserRole
-  constructor(id: string, name: string, email: string, role: CoreUserRole) {
-    super(id, name, email)
+  constructor(id: string, name: string, email: string, document: string, role: CoreUserRole) {
+    super(id, name, email, document)
     this.role = role
   }
 

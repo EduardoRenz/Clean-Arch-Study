@@ -8,11 +8,13 @@ export default abstract class User {
   protected id: string
   protected name: string
   protected email: string
+  protected document: string
 
-  constructor(id: string, name: string, email: string) {
+  constructor(id: string, name: string, email: string, document: string) {
     this.id = id
     this.name = name
     this.email = email
+    this.document = document
   }
 
   public get getName(): string {
@@ -25,6 +27,10 @@ export default abstract class User {
 
   public get getId(): string {
     return this.id
+  }
+
+  public get getDocument(): string {
+    return this.document
   }
 
   public setName(name: string) {
