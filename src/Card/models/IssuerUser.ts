@@ -1,4 +1,4 @@
-import User, { Gender } from '../common/User'
+import User, { Gender } from '../../common/User'
 
 export default class IssuerUser extends User {
   private gender: Gender
