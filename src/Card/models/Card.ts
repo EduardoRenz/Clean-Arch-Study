@@ -4,9 +4,11 @@ export enum CardType {
 }
 
 export default class Card {
-  private type: CardType
+  public id: string
+  public type: CardType
 
-  constructor(type: CardType) {
+  constructor(id: string, type: CardType) {
+    this.id = id
     this.type = type
   }
 }

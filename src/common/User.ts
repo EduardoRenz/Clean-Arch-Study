@@ -1,13 +1,13 @@
 export enum Gender {
-  M,
-  F,
-  N
+  M = 'Male',
+  F = 'Female',
+  N = 'None'
 }
 
 export default abstract class User {
-  private id: string
-  private name: string
-  private email: string
+  protected id: string
+  protected name: string
+  protected email: string
 
   constructor(id: string, name: string, email: string) {
     this.id = id
