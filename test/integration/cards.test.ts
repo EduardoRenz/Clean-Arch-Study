@@ -1,5 +1,5 @@
 import CardUseCases from '../../src/Card/CardUseCases'
-import Card, { CardType } from '../../src/Card/models/Card'
+import { CardType } from '../../src/Card/models/Card'
 import CoreUser, { CoreUserRole } from '../../src/core/CoreUser'
 import MockIssuer from '../mocks/MockIssuer'
 
