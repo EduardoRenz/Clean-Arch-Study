@@ -1,18 +1,22 @@
 import Address from '../common/Address'
 import CoreUser from '../core/CoreUser'
-import IssuerFactory from './IssuerFactory'
+import IssuerFactory from './factories/IssuerFactory'
 import IssuerGateway from './interfaces/IssuerGateway'
 
 import IssuerUser from './models/IssuerUser'
 import { CardType } from './models/Card'
+import CardRepository from './interfaces/CardRepository'
+import CardRepositoryFactory from './factories/CardRepositoryFactory'
 
 export default class CardUseCases {
-  private issuer: IssuerGateway
   private coreUser: CoreUser
   private issuerUser: IssuerUser
+  private issuer: IssuerGateway
+  private repository: CardRepository
 
-  constructor(coreUser: CoreUser, issuer?: IssuerGateway) {
+  constructor(coreUser: CoreUser, issuer?: IssuerGateway, repository?: CardRepository) {
     this.issuer = issuer ? issuer : IssuerFactory.create()
+    this.repository = repository ? repository : CardRepositoryFactory.create()
     this.coreUser = coreUser
 
     const foundIssuerUser = this.issuer.getUserByDocument(this.coreUser.getDocument)
@@ -23,6 +27,7 @@ export default class CardUseCases {
 
   public requestCard(cardType: CardType, shippingAddress?: Address): any {
     const card = this.issuer.requestCard(this.issuerUser, cardType, shippingAddress)
+    this.repository.save(card)
     return card.toObject()
   }
 }
