@@ -19,7 +19,6 @@ describe('Card Integration tests', () => {
     const cardUseCase = new CardUseCases(user, new MockIssuer())
     const card = cardUseCase.requestCard(CardType.VIRTUAL)
 
-    expect(card).toBeInstanceOf(Card)
-    expect(card.type).toBe(CardType.VIRTUAL)
+    expect(card.type).toBe('VIRTUAL')
   })
 })

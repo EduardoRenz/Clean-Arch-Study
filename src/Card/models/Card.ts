@@ -11,4 +11,11 @@ export default class Card {
     this.id = id
     this.type = type
   }
+
+  public toObject(): any {
+    return {
+      id: this.id,
+      type: CardType[this.type]
+    }
+  }
 }

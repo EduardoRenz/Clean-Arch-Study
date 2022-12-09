@@ -2,8 +2,14 @@ import Address from '../common/Address'
 import CoreUser from '../core/CoreUser'
 import IssuerFactory from './IssuerFactory'
 import IssuerGateway from './interfaces/IssuerGateway'
-import Card, { CardType } from './models/Card'
+
 import IssuerUser from './models/IssuerUser'
+import { CardType } from './models/Card'
+
+interface Output {
+  id: string
+  type: string
+}
 
 export default class CardUseCases {
   private issuer: IssuerGateway
@@ -20,8 +26,8 @@ export default class CardUseCases {
     this.issuerUser = foundIssuerUser
   }
 
-  public requestCard(cardType: CardType, shippingAddress?: Address): Card {
+  public requestCard(cardType: CardType, shippingAddress?: Address): Output {
     const card = this.issuer.requestCard(this.issuerUser, cardType, shippingAddress)
-    return card
+    return { id: card.id, type: CardType[card.type] }
   }
 }
