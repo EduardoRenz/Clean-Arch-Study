@@ -3,6 +3,11 @@ export enum CardType {
   VIRTUAL
 }
 
+interface CardOutput {
+  id: string
+  type: string
+}
+
 export default class Card {
   public id: string
   public type: CardType
@@ -12,7 +17,7 @@ export default class Card {
     this.type = type
   }
 
-  public toObject(): any {
+  public toObject(): CardOutput {
     return {
       id: this.id,
       type: CardType[this.type]
