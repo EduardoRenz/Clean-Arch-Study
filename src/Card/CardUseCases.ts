@@ -27,7 +27,7 @@ export default class CardUseCases {
 
   public requestCard(cardType: CardType, shippingAddress?: Address): any {
     const card = this.issuer.requestCard(this.issuerUser, cardType, shippingAddress)
-    this.repository.save(card)
+    this.repository.save(card, this.coreUser)
     return card.toObject()
   }
 }
